@@ -23,8 +23,8 @@ class Bubble {
     translate(x, y);
     scale(0.3);
     strokeWeight(1);
-    noStroke();
-
+    stroke(255);
+    strokeWeight(0.5);
     fill(#3E02CB, 100);
     ellipse(160, 220, 90, 90);
 
@@ -42,7 +42,8 @@ class Bubble {
     translate(x+100, y+50);
     scale(0.2);
     strokeWeight(1);
-    noStroke();
+    stroke(255);
+    strokeWeight(0.5);
 
     fill(#3E02CB, 100);
     ellipse(160, 220, 90, 90);

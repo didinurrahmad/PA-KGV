@@ -45,8 +45,96 @@ class Components {
     image(foto, 0, 0, 750, 370);
   }
 
+  void bunga2() {
+    // bunga 1
+    stroke(pink);
+    comp.bunga();
+
+    // bunga 2
+    pushMatrix();
+    stroke(kuning);
+    scale(0.8);
+    translate(circleX+90, -120, -20);
+    rotate(radians(45));
+    comp.bunga();
+    popMatrix();
+
+    // bunga 3
+    pushMatrix();
+    stroke(hijau_muda);
+    scale(1.4);
+    translate(circleX-90, -10, -20);
+    rotate(radians(25));
+    comp.bunga();
+    popMatrix();
+
+    // bunga 4
+    pushMatrix();
+    stroke(pink);
+    translate(430, -50, -20);
+    rotate(radians(25));
+    comp.bunga();
+    popMatrix();
+
+    // bunga 5
+    pushMatrix();
+    stroke(kuning);
+    scale(1.7);
+    translate(420, -100, -20);
+    rotate(radians(25));
+    comp.bunga();
+    popMatrix();
+
+    // bunga 6
+    pushMatrix();
+    stroke(biru);
+    scale(0.8);
+    translate(670, 120, -20);
+    rotate(radians(25));
+    comp.bunga();
+    popMatrix();
+
+    // bunga 7
+    pushMatrix();
+    stroke(kuning);
+    scale(0.8);
+    translate(120, 160, -20);
+    rotate(radians(25));
+    comp.bunga();
+    popMatrix();
+
+    // bunga kecil 1
+    pushMatrix();
+    stroke(hijau_muda);
+    scale(0.5);
+    translate(width+370, 10, -20);
+    rotate(radians(25));
+    comp.bunga();
+    popMatrix();
+
+    // bunga kecil 2
+    pushMatrix();
+    stroke(hijau);
+    scale(0.5);
+    translate(width+550, 450, -20);
+    rotate(radians(25));
+    comp.bunga();
+    popMatrix();
+
+    // bunga kecil 3
+    pushMatrix();
+    stroke(kuning);
+    scale(0.5);
+    translate(width-700, 500, -20);
+    rotate(radians(25));
+    comp.bunga();
+    popMatrix();
+  }
+
   void bunga() {
     pushMatrix();
+    circleX = 0;
+    rotate(lingkaran);
     scale(0.6);
 
     translate(-60, -170, -20);
@@ -103,6 +191,7 @@ class Components {
 
     ellipse(185, 283, 10, 10);
     popMatrix();
+    lingkaran += 0.0002;
   }
   void kerang() {
     // kerang tiang
@@ -238,15 +327,16 @@ class Components {
 
   void jalan() {
     // Jalanan
+    translate(0, 0, -50);
     noStroke();
     fill(255);
 
     fill(#a0b698);
-    rect(0, 370, 750, 130); //dasar laut ( pasir )
+    rect(-300, 370, width+400, 130); //dasar laut ( pasir )
     fill(#BCD8BF);
-    rect(0, 370, 750, 10);
+    rect(-300, 370, width+400, 10);
     fill(#4f6e72);
-    rect(0, 400, 750, 50);
+    rect(-300, 400, width+400, 100);
     quad(395, 380, 335, 380, 260, 400, 355, 400);
     ellipse(375, 380, 400, 20);
   }
@@ -261,8 +351,7 @@ class Components {
     ellipse(185, 389, 5, 0.5);
   }
   void spongebob() {
-
-
+    colorMode(RGB, 255);
     if (hit == true) {
       // body
       fill(255, 243, 0); // yellow
@@ -467,5 +556,27 @@ class Components {
       ellipse(mx + 13, 380, 10, 5);
     }
     mx = constrain(mouseX, 240, 590);
+  }
+  void background() {
+    pushMatrix();
+    colorMode(HSB, 360, 100, 100);
+    noStroke();
+    float skyHue = maxHue;
+    skyHue = map(mouseX, 0, width, 200, 240);
+    for (var rectY = 0; rectY < 700; rectY += 10) {
+      fill(skyHue, 90, map(mouseX, 0, width, 100, 35));
+      rect(-100, rectY-100, width+200, 300);
+      skyHue++;
+    }
+    float diameter = height + 100;
+    float S = map(mouseX, 0, width, 45, 10);
+    float mouseangle = map(mouseX, 0, width, PI, TWO_PI);
+    float d1 = 10 + (sin(mouseangle) * diameter / 2) + diameter / 2;
+    pushMatrix();
+    fill(0, S, 200, 100);
+    translate(0, 0, 150);
+    ellipse(mouseX, d1 - 100, 100, 100);
+    popMatrix();
+    popMatrix();
   }
 }

@@ -4,6 +4,12 @@ float x, y = 0;
 PFont font;
 float mx;
 boolean hit = true;
+float maxHue = 70;
+float lingkaran = 0;
+float circleX;
+float xspeed = 3;
+
+
 
 Bubble[] bubble = new Bubble[5];
 
@@ -20,8 +26,10 @@ color putih = color (255, 255, 255);
 
 Components comp = new Components();
 void setup() {
+
+
   size(750, 450, P3D);
-  foto = loadImage("backroung.jpg");
+  //foto = loadImage("backroung.jpg");
 
   font = createFont("Krabby Patty.ttf", 32);
   textFont(font);
@@ -32,99 +40,118 @@ void setup() {
 
 void draw() {
 
-  background(biru_muda);
-  // bunga 1
-  stroke(pink);
-  comp.bunga();
-
-  // bunga 2
+  //background(biru_muda);
   pushMatrix();
-  stroke(kuning);
-  scale(0.8);
-  translate(220, -120, -20);
-  rotate(radians(45));
-  comp.bunga();
+  translate(0, 0, -50);
+  comp.background();
   popMatrix();
 
-  // bunga 3
-  pushMatrix();
-  stroke(hijau_muda);
-  scale(1.4);
-  translate(180, -10, -20);
-  rotate(radians(25));
-  comp.bunga();
-  popMatrix();
+  comp.bunga2();
 
-  // bunga 4
-  pushMatrix();
-  stroke(pink);
-  translate(430, -50, -20);
-  rotate(radians(25));
-  comp.bunga();
-  popMatrix();
+  circleX = circleX + xspeed;
 
-  // bunga 5
-  pushMatrix();
-  stroke(kuning);
-  scale(1.7);
-  translate(420, -100, -20);
-  rotate(radians(25));
-  comp.bunga();
-  popMatrix();
+  if (circleX > width) {
+    xspeed = xspeed * -1.1;
+  }
+  if (circleX < 0) {
+    xspeed = xspeed * 1.1;
+  }
+  //// bunga 1
+  //stroke(pink);
+  //comp.bunga();
 
-  // bunga 6
-  pushMatrix();
-  stroke(biru);
-  scale(0.8);
-  translate(670, 120, -20);
-  rotate(radians(25));
-  comp.bunga();
-  popMatrix();
+  //// bunga 2
+  //pushMatrix();
+  //stroke(kuning);
+  //scale(0.8);
+  //translate(220, -120, -20);
+  //rotate(radians(45));
+  //comp.bunga();
+  //popMatrix();
 
-  // bunga 7
-  pushMatrix();
-  stroke(kuning);
-  scale(0.8);
-  translate(120, 160, -20);
-  rotate(radians(25));
-  comp.bunga();
-  popMatrix();
+  //// bunga 3
+  //pushMatrix();
+  //stroke(hijau_muda);
+  //scale(1.4);
+  //translate(180, -21, -20);
+  //rotate(radians(25));
+  //comp.bunga();
+  //popMatrix();
 
-  // bunga kecil 1
-  pushMatrix();
-  stroke(hijau_muda);
-  scale(0.5);
-  translate(width+370, 10, -20);
-  rotate(radians(25));
-  comp.bunga();
-  popMatrix();
+  //// bunga 4
+  //pushMatrix();
+  //stroke(pink);
+  //translate(430, -50, -20);
+  //rotate(radians(25));
+  //comp.bunga();
+  //popMatrix();
 
-  // bunga kecil 2
-  pushMatrix();
-  stroke(hijau);
-  scale(0.5);
-  translate(width+550, 450, -20);
-  rotate(radians(25));
-  comp.bunga();
-  popMatrix();
+  //// bunga 5
+  //pushMatrix();
+  //stroke(kuning);
+  //scale(1.7);
+  //translate(420, -100, 0);
+  //rotate(radians(25));
+  //comp.bunga();
+  //popMatrix();
 
-  // bunga kecil 3
-  pushMatrix();
-  stroke(kuning);
-  scale(0.5);
-  translate(width-700, 500, -20);
-  rotate(radians(25));
-  comp.bunga();
-  popMatrix();
+  //// bunga 6
+  //pushMatrix();
+  //stroke(biru);
+  //scale(0.8);
+  //translate(670, 120, -20);
+  //rotate(radians(25));
+  //comp.bunga();
+  //popMatrix();
+
+  //// bunga 7
+  //pushMatrix();
+  //stroke(kuning);
+  //scale(0.8);
+  //translate(120, 160, -20);
+  //rotate(radians(25));
+  //comp.bunga();
+  //popMatrix();
+
+  //// bunga kecil 1
+  //pushMatrix();
+  //stroke(hijau_muda);
+  //scale(0.5);
+  //translate(width+370, 10, -20);
+  //rotate(radians(25));
+  //comp.bunga();
+  //popMatrix();
+
+  //// bunga kecil 2
+  //pushMatrix();
+  //stroke(hijau);
+  //scale(0.5);
+  //translate(width+550, 450, -20);
+  //rotate(radians(25));
+  //comp.bunga();
+  //popMatrix();
+
+  //// bunga kecil 3
+  //pushMatrix();
+  //stroke(kuning);
+  //scale(0.5);
+  //translate(width-700, 500, -20);
+  //rotate(radians(25));
+  //comp.bunga();
+  //popMatrix();
 
   mousePressed();
 
   comp.jalan();
   pushMatrix();
-  translate(0,0,2);
+  translate(0, 0, 2);
   comp.tiang();
   popMatrix();
+
+  pushMatrix();
+  translate(21.5, 0, 50);
   comp.kerang();
+  popMatrix();
 
   comp.gedung();
 
@@ -143,9 +170,9 @@ void draw() {
   y = y + 3;
   x = x + 6;
   pushMatrix();
-  translate(0,0,10);
+  translate(0, 0, 10);
   comp.mobilGelembung();
-popMatrix();
+  popMatrix();
   if (y > width+400) {
     y = 0;
   }
@@ -156,11 +183,13 @@ popMatrix();
   }
   popMatrix();
 
-  //int x = mouseX;
-  //int y = mouseY;
-  //String mouse = str(x) + "," + str(y);
+  //comp.mobil3D();
 
-  //fill(0);
-  //textSize(15);
-  //text(mouse, mouseX, mouseY);
+  int x = mouseX;
+  int y = mouseY;
+  String mouse = str(x) + "," + str(y);
+
+  fill(0);
+  textSize(15);
+  text(mouse, mouseX, mouseY);
 }
