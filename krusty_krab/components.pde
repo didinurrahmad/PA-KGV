@@ -179,8 +179,6 @@ class Components {
     rect(354, 300, 70, 10);
     popMatrix();
 
-
-
     // Dinding tengah
     noStroke();
     fill(#3E2E0C);
@@ -227,7 +225,6 @@ class Components {
     arc(502, 350.5, 40, 240, PI, 6.31);  //dinding kanan
     popMatrix();
 
-    // Bangunan krusty krab
     // Pondasi bawah
     fill(#67623c);
     rect(250, 350, 95, 26); // kiri

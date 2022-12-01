@@ -142,8 +142,10 @@ void draw() {
   popMatrix();
   y = y + 3;
   x = x + 6;
+  pushMatrix();
+  translate(0,0,10);
   comp.mobilGelembung();
-
+popMatrix();
   if (y > width+400) {
     y = 0;
   }
