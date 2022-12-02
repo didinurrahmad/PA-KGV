@@ -179,11 +179,11 @@ void draw() {
   translate(15, -92.5, 40);
   comp.baturumput1();
   popMatrix();
-  int x = mouseX;
-  int y = mouseY;
-  String mouse = str(x) + "," + str(y);
+  //int x = mouseX;
+  //int y = mouseY;
+  //String mouse = str(x) + "," + str(y);
 
-  fill(0);
-  textSize(15);
-  text(mouse, mouseX, mouseY);
+  //fill(0);
+  //textSize(15);
+  //text(mouse, mouseX, mouseY);
 }
