@@ -1,13 +1,90 @@
 class Components {
 
+  void baturumput() {
+    //batu
+    fill(94, 34, 147);
+    pointLight(205, 170, 237, 680, 378, 90);
+    beginShape();
+    curveVertex(600, 450);
+    curveVertex(600, 450);
 
+    curveVertex(630, 400);
+
+    curveVertex(750, 300);
+
+    curveVertex(750, 450);
+    curveVertex(750, 450);
+    endShape(CLOSE);
+  }
+
+  void baturumput1() {
+    //batu
+    pushMatrix();
+    fill(94, 34, 147);
+    pointLight(205, 170, 237, 0, 400, 90);
+    beginShape();
+    curveVertex(0, 450);
+    curveVertex(0, 450);
+
+    curveVertex(10, 420);
+
+    curveVertex(40, 420);
+
+    curveVertex(50, 450);
+    curveVertex(50, 450);
+    endShape(CLOSE);
+
+    fill(150, 90, 200);
+    beginShape();
+    curveVertex(-25, 450);
+    curveVertex(-25, 450);
+
+    curveVertex(-25, 400);
+    curveVertex(5, 425);
+
+    curveVertex(20, 450);
+    curveVertex(20, 450);
+    endShape(CLOSE);
+    popMatrix();
+  }
+
+  void rumput1() {
+    beginShape();
+    curveVertex(0, 330);
+    curveVertex(0, 330);
+
+    curveVertex(4, 320);
+    curveVertex(0, 310);
+    curveVertex(6, 300);
+    curveVertex(2, 290);
+
+    curveVertex(10, 250);
+    curveVertex(10, 250);
+
+    curveVertex(14, 290);
+    curveVertex(18, 300);
+    curveVertex(12, 310);
+    curveVertex(16, 320);
+
+    curveVertex(20, 330);
+    curveVertex(20, 330);
+    endShape(CLOSE);
+  }
   void mobilGelembung() {
+    x1 = x1 + xs1;
+    if (x1 > 750)
+    {
+      x1 = random(-350, -250);
+      y1 = random(150, 200);
+      xs1 = random(0.5, 5);
+    }
+    println(x1);
     // Mobil Gelembung 1
     pushMatrix();
 
     stroke(255);
     strokeWeight(1);
-    translate(y-200, height/2-2 * sise/2); // translate ini berguna untuk merubah posisi dari nilai y = 0 ++ 5
+    translate(x1, y1, -1); // translate ini berguna untuk merubah posisi dari nilai y = 0 ++ 5
 
     fill(#6FFFD0, 90);
     ellipse(138, 265, 25, 25);
@@ -33,17 +110,6 @@ class Components {
   }
 
 
-  void mousePressed() {
-    if (mousePressed && (mouseButton == LEFT)) {
-      tint(255, 0, 0);
-    } else if (mousePressed && (mouseButton == RIGHT)) {
-      noTint();
-    }
-  }
-
-  void backgron() {
-    image(foto, 0, 0, 750, 370);
-  }
 
   void bunga2() {
     // bunga 1
@@ -89,7 +155,7 @@ class Components {
     pushMatrix();
     stroke(biru);
     scale(0.8);
-    translate(670, 120, -20);
+    translate(670, 95, -20);
     rotate(radians(25));
     comp.bunga();
     popMatrix();
@@ -98,7 +164,7 @@ class Components {
     pushMatrix();
     stroke(kuning);
     scale(0.8);
-    translate(120, 160, -20);
+    translate(220, 160, -50);
     rotate(radians(25));
     comp.bunga();
     popMatrix();
@@ -196,8 +262,9 @@ class Components {
   void kerang() {
     // kerang tiang
     pushMatrix();
+
     fill(#DEDEDE);
-    translate(-24, -85);
+    translate(-24, -85,1);
     beginShape();
     stroke(#023CCB);
     strokeWeight(1);
@@ -230,6 +297,7 @@ class Components {
     popMatrix();
 
     pushMatrix();
+    translate(0,0,1);
     fill(#CB0202);
     textSize(13);
     text("THE", 172, 148);
@@ -254,9 +322,14 @@ class Components {
 
     // pintu
     fill(#46A4FF);
-
-    //rect(353, 302, 100, 70);
     rect(290, 304.1, 260, 70);
+    stroke(100);
+    line(385, 310, 385, 375);
+    fill(kuning);
+    noStroke();
+    rect(375, 330, 5, 15);
+    rect(391, 330, 5, 15);
+
     pushMatrix();
     noStroke();
     //strokeWeight(1);
@@ -267,6 +340,7 @@ class Components {
     fill(#462B1B);
     rect(354, 300, 70, 10);
     popMatrix();
+
 
     // Dinding tengah
     noStroke();
@@ -316,12 +390,20 @@ class Components {
 
     // Pondasi bawah
     fill(#67623c);
-    rect(250, 350, 95, 26); // kiri
-    rect(410, 350, 95, 26); // kanan
+    // kiri
+    pushMatrix();
+    translate(304, 360, -10);
+    box(95, 29, -20);
+    popMatrix();
+    // kanan
+    pushMatrix();
+    translate(457, 360, -10);
+    box(97, 29, -20);
+    popMatrix();
 
     fill(#423d32);
     quad(570, 355, 505, 350, 505, 376, 570, 376);
-    quad(353, 353, 345, 350, 345, 376, 353, 373);
+    //quad(353, 353, 345, 350, 345, 376, 353, 373);
     popMatrix();
   }
 

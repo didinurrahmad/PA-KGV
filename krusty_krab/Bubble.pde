@@ -1,6 +1,5 @@
 class Bubble {
 
-  //  Bubble bb = new Bubble();
   float x = random(width);
   float y = random(500, 50);
   float ys = random(0.5, 2);

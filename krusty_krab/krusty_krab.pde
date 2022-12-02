@@ -1,17 +1,26 @@
-PImage foto;
-float sise = 75;
+// * & spongebob
 float x, y = 0;
 PFont font;
 float mx;
 boolean hit = true;
+
+// background
 float maxHue = 70;
+
+//bunga
 float lingkaran = 0;
 float circleX;
 float xspeed = 3;
 
+//mobil
+float x1 = -250;
+float y1 = 150;
+float xs1 = 3;
 
-
+// membuat object dari class Bubble
 Bubble[] bubble = new Bubble[5];
+Event[] ev = new Event[100];
+Event event = new Event();
 
 //inisialisasi variabel warna
 color pink = color (255, 49, 183);
@@ -27,7 +36,6 @@ color putih = color (255, 255, 255);
 Components comp = new Components();
 void setup() {
 
-
   size(750, 450, P3D);
   //foto = loadImage("backroung.jpg");
 
@@ -35,6 +43,10 @@ void setup() {
   textFont(font);
   for (int i = 0; i< bubble.length; i++) {
     bubble[i] = new Bubble();
+  }
+  
+  for (int i = 0; i< ev.length; i++) {
+    ev[i] = new Event();
   }
 }
 
@@ -56,91 +68,8 @@ void draw() {
   if (circleX < 0) {
     xspeed = xspeed * 1.1;
   }
-  //// bunga 1
-  //stroke(pink);
-  //comp.bunga();
-
-  //// bunga 2
-  //pushMatrix();
-  //stroke(kuning);
-  //scale(0.8);
-  //translate(220, -120, -20);
-  //rotate(radians(45));
-  //comp.bunga();
-  //popMatrix();
-
-  //// bunga 3
-  //pushMatrix();
-  //stroke(hijau_muda);
-  //scale(1.4);
-  //translate(180, -21, -20);
-  //rotate(radians(25));
-  //comp.bunga();
-  //popMatrix();
-
-  //// bunga 4
-  //pushMatrix();
-  //stroke(pink);
-  //translate(430, -50, -20);
-  //rotate(radians(25));
-  //comp.bunga();
-  //popMatrix();
-
-  //// bunga 5
-  //pushMatrix();
-  //stroke(kuning);
-  //scale(1.7);
-  //translate(420, -100, 0);
-  //rotate(radians(25));
-  //comp.bunga();
-  //popMatrix();
-
-  //// bunga 6
-  //pushMatrix();
-  //stroke(biru);
-  //scale(0.8);
-  //translate(670, 120, -20);
-  //rotate(radians(25));
-  //comp.bunga();
-  //popMatrix();
-
-  //// bunga 7
-  //pushMatrix();
-  //stroke(kuning);
-  //scale(0.8);
-  //translate(120, 160, -20);
-  //rotate(radians(25));
-  //comp.bunga();
-  //popMatrix();
-
-  //// bunga kecil 1
-  //pushMatrix();
-  //stroke(hijau_muda);
-  //scale(0.5);
-  //translate(width+370, 10, -20);
-  //rotate(radians(25));
-  //comp.bunga();
-  //popMatrix();
-
-  //// bunga kecil 2
-  //pushMatrix();
-  //stroke(hijau);
-  //scale(0.5);
-  //translate(width+550, 450, -20);
-  //rotate(radians(25));
-  //comp.bunga();
-  //popMatrix();
-
-  //// bunga kecil 3
-  //pushMatrix();
-  //stroke(kuning);
-  //scale(0.5);
-  //translate(width-700, 500, -20);
-  //rotate(radians(25));
-  //comp.bunga();
-  //popMatrix();
-
-  mousePressed();
+  
+  event.mousePressed1();
 
   comp.jalan();
   pushMatrix();
@@ -149,7 +78,6 @@ void draw() {
   popMatrix();
 
   pushMatrix();
-  translate(21.5, 0, 50);
   comp.kerang();
   popMatrix();
 
@@ -170,7 +98,8 @@ void draw() {
   y = y + 3;
   x = x + 6;
   pushMatrix();
-  translate(0, 0, 10);
+  translate(0, 0, 50);
+
   comp.mobilGelembung();
   popMatrix();
   if (y > width+400) {
@@ -180,11 +109,76 @@ void draw() {
   for (int i = 0; i< bubble.length; i++) {
     bubble[i].show();
     bubble[i].fall();
+    //bubble[i].arround();
   }
+
+
+
+  mousePressed();
+  popMatrix();
+  pushMatrix();
+
+  translate(0, 0, 45);
+  //comp.mobilGelembung();
   popMatrix();
 
-  //comp.mobil3D();
+  // rumput-rumput
+  pushMatrix();
+  fill(hijau);
 
+  translate(-15, 10, 40);
+  comp.rumput1();
+  popMatrix();
+
+  pushMatrix();
+  fill(hijau_muda);
+
+  translate(0, 5, 40);
+  comp.rumput1();
+  popMatrix();
+
+  pushMatrix();
+  fill(hijau);
+
+  translate(15, 10, 40);
+  comp.rumput1();
+  popMatrix();
+
+  // rumput-rumput depan
+  pushMatrix();
+  translate(700, 50, 10);
+  pushMatrix();
+  fill(hijau);
+
+  translate(-15, 34, 40);
+  comp.rumput1();
+  popMatrix();
+
+  pushMatrix();
+  fill(hijau_muda);
+
+  translate(0, 19, 40);
+  comp.rumput1();
+  popMatrix();
+
+  pushMatrix();
+  fill(hijau);
+
+  translate(15, 10, 40);
+  comp.rumput1();
+  popMatrix();
+  popMatrix();
+
+
+  pushMatrix();
+  translate(40, 30, 51);
+  comp.baturumput();
+  popMatrix();
+
+  pushMatrix();
+  translate(15, -92.5, 40);
+  comp.baturumput1();
+  popMatrix();
   int x = mouseX;
   int y = mouseY;
   String mouse = str(x) + "," + str(y);
