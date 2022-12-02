@@ -264,7 +264,7 @@ class Components {
     pushMatrix();
 
     fill(#DEDEDE);
-    translate(-24, -85,1);
+    translate(-24, -85, 1);
     beginShape();
     stroke(#023CCB);
     strokeWeight(1);
@@ -297,7 +297,7 @@ class Components {
     popMatrix();
 
     pushMatrix();
-    translate(0,0,1);
+    translate(0, 0, 1);
     fill(#CB0202);
     textSize(13);
     text("THE", 172, 148);
@@ -404,6 +404,79 @@ class Components {
     fill(#423d32);
     quad(573, 355, 505, 345, 505, 375, 573, 376);
     //quad(353, 353, 345, 350, 345, 376, 353, 373);
+    popMatrix();
+  }
+
+  void bendera() {
+    // bendera
+    stroke(0);
+    line(267, 271, 448, 271);
+    fill(#FFF2F2);
+    noStroke();
+    translate(5, 10, 1);
+    // bendera merah
+    fill(#FFF940);
+    rect(270, 261, 27, 20);
+    fill(#FF4047);
+    rect(270, 261, 10, 8);
+    pushMatrix();
+    translate(17, 0);
+    rect(270, 261, 10, 8);
+    translate(0, 12);
+    rect(270, 261, 10, 8);
+    translate(-17, 0);
+    rect(270, 261, 10, 8);
+    popMatrix();
+
+    fill(#ECED41);// bendera kuning
+    rect(305, 261, 27, 20);
+    fill(#080808);
+    ellipse(319, 270, 15, 15);
+
+    fill(#036DFF);//bendera biru
+    rect(340, 261, 27, 20);
+    fill(#C4C4C4);
+    triangle(341, 280, 366, 260, 366, 280);
+
+    fill(#C4C4C4);//bendera abumerah
+    rect(376, 261, 27, 20);
+    fill(#FF4047);
+    rect(376, 261, 12, 10);
+    pushMatrix();
+    translate(14, 10);
+    rect(376, 261, 13, 10);
+    popMatrix();
+
+    // bendera kuning biru
+    fill(#FFF940);
+    rect(410, 260, 27, 20);
+    fill(#036DFF);
+    rect(422, 260, 15, 20);
+
+    //cerobong asap
+    pushMatrix();
+    translate(-50, -14);
+    fill(#C4C4C4);
+    pushMatrix();
+    translate(390,203,0);
+    box(25, 34, -50);
+    popMatrix();
+    stroke(#838383);
+    line(455, 218, 455, 187);
+
+    line(428, 178, 455, 185);
+    ellipse(428, 178, 5, 5);
+    line(455, 185, 478, 178);
+    ellipse(478, 178, 5, 5);
+    line(455, 187, 478, 198);
+    ellipse(478, 198, 5, 5);
+    line(428, 198, 452, 187);
+    ellipse(428, 198, 5, 5);
+    line(455, 187, 455, 165);
+    ellipse(455, 165, 5, 5);
+    fill(#838383);
+    ellipse(455, 187, 8, 8);
+    noStroke();
     popMatrix();
   }
 

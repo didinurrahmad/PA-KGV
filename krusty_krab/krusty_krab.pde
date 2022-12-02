@@ -1,3 +1,7 @@
+//import sound library
+import processing.sound.*;
+SoundFile file;
+
 // * & spongebob
 float x, y = 0;
 PFont font;
@@ -35,6 +39,7 @@ color putih = color (255, 255, 255);
 
 Components comp = new Components();
 void setup() {
+  file = new SoundFile(this, "audio.mp3");
 
   size(750, 450, P3D);
   //foto = loadImage("backroung.jpg");
@@ -44,13 +49,20 @@ void setup() {
   for (int i = 0; i< bubble.length; i++) {
     bubble[i] = new Bubble();
   }
-  
+
   for (int i = 0; i< ev.length; i++) {
     ev[i] = new Event();
   }
 }
 
 void draw() {
+  if (keyPressed) {
+    if (key=='p'||key=='y') {
+      file.play();
+    }
+  } else {
+    file.pause();
+  }
 
   //background(biru_muda);
   pushMatrix();
@@ -68,7 +80,7 @@ void draw() {
   if (circleX < 0) {
     xspeed = xspeed * 1.1;
   }
-  
+
   event.mousePressed1();
 
   comp.jalan();
@@ -82,7 +94,7 @@ void draw() {
   popMatrix();
 
   comp.gedung();
-
+  comp.bendera();
   pushMatrix();
   scale(0.9);
   translate(0, 45, 1);
@@ -176,7 +188,7 @@ void draw() {
   popMatrix();
 
   pushMatrix();
-  translate(15, -92.5, 40);
+  translate(10, -100, 40);
   comp.baturumput1();
   popMatrix();
   //int x = mouseX;
